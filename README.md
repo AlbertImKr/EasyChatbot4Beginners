@@ -10,5 +10,11 @@
 ## WBS(Work Breakdown Structure)
 
 ![WBS](https://github.com/user-attachments/assets/885cf6af-4710-4f2c-810b-650207586918)
-- 
+
 - [프로젝트 보드 보기](https://github.com/users/AlbertImKr/projects/3/views/2)
+
+## 와이어프레임
+
+![와이어프레임](https://github.com/user-attachments/assets/1b82a2e8-8772-411e-9908-50dd98e296ce)
+
+- [Figma 주소](https://www.figma.com/design/Uzh16al5HdIt7pApcEh0rw/Visily-(Community)?node-id=0-1&t=NwnYITf6yJNRqjdp-1)
