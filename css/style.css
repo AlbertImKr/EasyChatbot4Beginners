@@ -144,11 +144,11 @@ article > ul > li > ul > li:nth-child(2) {
   margin-top: 8px;
 }
 
-.master-chat-history p {
+.master-chat-history > p {
   margin-left: 46px;
 }
 
-.client-chat-history p {
+.client-chat-history > p {
   margin-right: 46px;
 }
 
