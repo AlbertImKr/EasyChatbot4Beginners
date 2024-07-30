@@ -9,16 +9,17 @@
 </head>
 <body>
 <main>
+  <article class="search-container-article">
+    <h2>Master를 검색하세요.</h2>
+    <div class="search-container">
+      <label for="search-input" class="search-label">검색창</label>
+      <i class="bi bi-search"></i>
+      <input type="text" id="search-input" placeholder="Master를 검색하세요">
+    </div>
+  </article>
   <form>
     <article class="choose-your-master-article">
-      <h2>Master를 선택하세요.</h2>
-      <label>
-        <span>Master를 검색하세요.</span>
-        <div class="search-container">
-          <i class="bi bi-search"></i>
-          <input type="text" id="search-input" placeholder="Master를 검색하세요">
-        </div>
-      </label>
+      <h2>Master를 선택하세요</h2>
       <ul id="master-list">
         <li>
           <ul>
@@ -62,13 +63,15 @@
     </article>
     <article class="ask-your-master-article">
       <h2>Master에게 문의하세요.</h2>
-      <section class="chat-history">
+      <section class="chat-history-section">
+        <h3>채팅 history</h3>
         <div class="master-chat-history">
           <p class="master-chat">안녕하세요! 무엇을 도와드릴까요?</p>
           <i class="bi bi-chat"></i>
         </div>
       </section>
       <section class="message-input-section">
+        <h3>문의사항 입력</h3>
         <label for="chat-input" class="message-input-label">메시지 입력창</label>
         <input type="text" id="chat-input" placeholder="메시지를 입력하세요">
         <button type="submit" class="send-button"><i class="bi bi-send"></i></button>
