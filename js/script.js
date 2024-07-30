@@ -9,13 +9,13 @@ searchInput.addEventListener("input", searchInputListener);
 function searchInputListener() {
     const searchValue = searchInput.value.toLowerCase();
 
-
     const masterList = document.querySelector("#master-list");
     const masterItems = masterList.querySelectorAll("#master-list > li");
     console.log(masterItems);
 
     masterItems.forEach((masterItem) => {
-        const masterName = masterItem.querySelector("li:nth-child(2)").textContent.toLowerCase();
+        const masterName = masterItem.querySelector(
+            "li:nth-child(2)").textContent.toLowerCase();
         if (masterName.includes(searchValue)) {
             masterItem.style.display = "block";
         } else {
@@ -23,7 +23,6 @@ function searchInputListener() {
         }
     });
 }
-
 
 function sendButtonListener() {
     return async (e) => {
@@ -52,7 +51,7 @@ function sendButtonListener() {
         document.querySelector("#chat-input").value = "";
 
         // 채팅 history에 메시지 추가하기
-        const chatHistory = document.querySelector(".chat-history");
+        const chatHistory = document.querySelector(".chat-history-section");
         chatHistory.appendChild(makeClientChat(message));
 
         // 답변 받기 전까지 더 이상 입력 못하게 하기
@@ -74,7 +73,6 @@ function sendButtonListener() {
         document.querySelector("#chat-input").disabled = false;
     };
 }
-
 
 function makeClientChat(message) {
     const newClientChatHistory = document.createElement("div");
@@ -228,8 +226,12 @@ function makeMasterRadio(master) {
     masterRadio.value = master.name;
     masterRadio.classList.add("choose-your-master-input")
     masterRadio.addEventListener("change", async () => {
-        let chatHistory = document.querySelector(".chat-history");
+        let chatHistory = document.querySelector(".chat-history-section");
         chatHistory.innerHTML = "";
+
+        let sectionHeader = document.createElement("h3");
+        sectionHeader.textContent = "채팅 history"
+        chatHistory.appendChild(sectionHeader);
 
         let sayHello = makeMasterChatHistory("안녕하세요! 무엇을 도와드릴까요?");
         chatHistory.appendChild(sayHello);
