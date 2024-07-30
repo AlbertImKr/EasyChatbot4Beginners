@@ -40,15 +40,14 @@ function sendButtonListener() {
 
         // 입력한 메시지를 가져오기
         const message = document.querySelector("#chat-input").value;
+        // 채팅창 초기화
+        document.querySelector("#chat-input").value = "";
 
         // 입력한 메시지가 없으면 경고창 띄우기
-        if (!message) {
+        if (!message || message.trim() === "") {
             alert("메시지를 입력해주세요.");
             return;
         }
-
-        // 채팅창 초기화
-        document.querySelector("#chat-input").value = "";
 
         // 채팅 history에 메시지 추가하기
         const chatHistory = document.querySelector(".chat-history-section");
