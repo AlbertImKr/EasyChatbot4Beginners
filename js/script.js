@@ -1,6 +1,4 @@
 const sendButton = document.querySelector(".message-input-section > button")
-
-// 입력한 내용 기반으로 채팅을 보내고 마스터에게 답변을 받는다
 sendButton.addEventListener("click", sendButtonListener());
 
 const searchInput = document.querySelector("#search-input");
@@ -11,7 +9,6 @@ function searchInputListener() {
 
     const masterList = document.querySelector("#master-list");
     const masterItems = masterList.querySelectorAll("#master-list > li");
-    console.log(masterItems);
 
     masterItems.forEach((masterItem) => {
         const masterName = masterItem.querySelector(
@@ -129,7 +126,7 @@ function getMasterData(masterName) {
 }
 
 function makePrompt(data, message) {
-    const systemRole = `당신은 ${data["expert"]} 전문가 입니다.너의 모든 지식은 ${data.links}사이트 기반으로 합니다.그 외의 지식은 모른다고 다른 마스터에게 물어보라고 해라.`;
+    const systemRole = `당신은 ${data["expert"]} 퀴즈 출제자다.퀴즈를 내주고 유저가 맞추면 다음 퀴즈를 알려주고 아니면 해설과 함게 알려주고 다음 퀴즈를 낸다.`;
 
     const prompt =
         [
@@ -145,7 +142,7 @@ function makePrompt(data, message) {
         prompt.push({"role": "user", "content": lastClientChatContent});
 
         const lastMasterChatContent = masterChats[masterChats.length
-        - 1].textContent;
+        - 2].textContent;
         prompt.push({"role": "assistant", "content": lastMasterChatContent});
     }
 
@@ -201,7 +198,7 @@ function makeMasterItem(master) {
     masterName.textContent = master.name;
 
     const masterExpert = document.createElement("li");
-    masterExpert.textContent = `Expert in ${master.expert}`;
+    masterExpert.textContent = `Quiz about ${master.expert}`;
 
     const masterRating = document.createElement("li");
     for (let i = 0; i < master.rating; i++) {
@@ -232,7 +229,7 @@ function makeMasterRadio(master) {
         sectionHeader.textContent = "채팅 history"
         chatHistory.appendChild(sectionHeader);
 
-        let sayHello = makeMasterChatHistory("안녕하세요! 무엇을 도와드릴까요?");
+        let sayHello = makeMasterChatHistory("퀴즈 풀기를 시작하려면 시작을 입력하세요.");
         chatHistory.appendChild(sayHello);
     });
     return masterRadio;
