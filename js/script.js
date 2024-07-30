@@ -162,7 +162,7 @@ function makeMasterChatHistory(message) {
 
     const masterChat = document.createElement("p");
     masterChat.classList.add("master-chat");
-    masterChat.textContent = message;
+    masterChat.innerHTML = marked.parse(message);
 
     newMasterChatHistory.appendChild(masterChat);
     newMasterChatHistory.appendChild(masterChatIcon);
