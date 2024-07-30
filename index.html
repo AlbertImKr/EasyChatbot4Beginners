@@ -19,13 +19,11 @@
           <input type="text" id="search-input" placeholder="Master를 검색하세요">
         </div>
       </label>
-      <ul>
+      <ul id="master-list">
         <li>
           <ul>
             <li>
-              <a href="./images/Emma.jpg">
-                <img src="./images/Emma.jpg" alt="Emma">
-              </a>
+              <img src="./images/Emma.jpg" alt="Emma">
             </li>
             <li>Emma</li>
             <li>Expert in HTML, CSS</li>
@@ -65,8 +63,10 @@
     <article class="ask-your-master-article">
       <h2>Master에게 문의하세요.</h2>
       <section class="chat-history">
-        <p class="master-chat">안녕하세요. 무엇을 도와드릴까요<i class="bi bi-chat"></i></p>
-        <p class="client-chat"><i class="bi bi-person-circle"></i>Html이 무엇인가?</p>
+        <div class="master-chat-history">
+          <p class="master-chat">안녕하세요! 무엇을 도와드릴까요?</p>
+          <i class="bi bi-chat"></i>
+        </div>
       </section>
       <section class="message-input-section">
         <label for="chat-input" class="message-input-label">메시지 입력창</label>
@@ -76,5 +76,6 @@
     </article>
   </form>
 </main>
+<script src="js/script.js"></script>
 </body>
 </html>
