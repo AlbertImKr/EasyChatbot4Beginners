@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Emma",
     "expert": "HTML,CSS",
-    "image": "images/emma.jpg",
+    "image": "./images/emma.jpg",
     "rating": 4,
     "links": [
       {
@@ -22,7 +22,7 @@
     "id": 2,
     "name": "Liam",
     "expert": "JavaScript",
-    "image": "images/liam.jpg",
+    "image": "./images/liam.jpg",
     "rating": 5,
     "links": [
       {
@@ -41,7 +41,7 @@
     "id": 3,
     "name": "Olivia",
     "expert": "Python",
-    "image": "images/olivia.jpg",
+    "image": "./images/olivia.jpg",
     "rating": 3,
     "links": [
       {
