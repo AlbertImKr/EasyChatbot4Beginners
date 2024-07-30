@@ -1,6 +1,6 @@
 # EasyChatbot4Beginners
 
-## python 초보자를 위한 Chatbot
+## Python 초보자를 위한 Chatbot
 
 - 목표
 
@@ -19,7 +19,7 @@
 
 - [Figma 주소](https://www.figma.com/design/Uzh16al5HdIt7pApcEh0rw/Visily-(Community)?node-id=0-1&t=NwnYITf6yJNRqjdp-1)
 
-## 공개주소
+## 공개 주소
 
 [주소](https://albertimkr.github.io/EasyChatbot4Beginners/)
 
@@ -31,11 +31,11 @@
 
 ![검색기능시연](https://github.com/user-attachments/assets/1fde56f6-8805-460c-b60c-1da1e7c187a9)
 
-### Master 무조건 선택해야 합니다.하나만 선택할 수 있습니다. 선택하지 않거나 메시지가 공백일 때 경고를 뛰웁니다.
+### Master는 무조건 선택해야 합니다.하나만 선택할 수 있습니다. 선택하지 않거나 메시지가 공백일 때 경고를 띄웁니다.
 
 - `type="radio"`으로 하나만 선택할 수 있도록 했습니다.
 
-![경고창에러시연](https://github.com/user-attachments/assets/42eb7b3d-dbf2-4f41-88e2-190b3a4162fe)
+![경고창시연](https://github.com/user-attachments/assets/42eb7b3d-dbf2-4f41-88e2-190b3a4162fe)
 
 ### 문의기능
 
