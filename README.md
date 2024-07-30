@@ -4,8 +4,7 @@
 
 - 목표
 
-    - 초보자가 학습할 때는 정확한 내용을 학습하는 것이 중요합니다. 그러나 일부 블로그의 내용은 정확하지 않을 수 있습니다. 
-    이 ChatBot은 인증된 소스를 참조하여 검색 시간을 줄이고 답변의 정확성을 높이기 위해 설계되었습니다.
+    - 초보자를 위한 퀴즈를 내주는 ChatBot 서비스입니다.
 
 ## WBS(Work Breakdown Structure)
 
@@ -29,16 +28,15 @@
 
 - `style= "display: none"`으로 숨김
 
-![검색기능시연](https://github.com/user-attachments/assets/1fde56f6-8805-460c-b60c-1da1e7c187a9)
+![검색기능시연](https://github.com/user-attachments/assets/3505a27a-547c-4cd0-9be5-53f8d7f0eec2)
 
 ### Master는 무조건 선택해야 합니다.하나만 선택할 수 있습니다. 선택하지 않거나 메시지가 공백일 때 경고를 띄웁니다.
 
 - `type="radio"`으로 하나만 선택할 수 있도록 했습니다.
 
-![경고창시연](https://github.com/user-attachments/assets/42eb7b3d-dbf2-4f41-88e2-190b3a4162fe)
+![경고창시연](https://github.com/user-attachments/assets/0a224063-44d0-4029-8d38-02a88ba53fcf)
 
-### 문의기능
+### 퀴즈 풀이
 
-- 참조한 사이트에 해당 내용이 있어야 답변합니다. 모르면 다른 마스터에게 문의하도록 합니다.
+![퀴즈풀이 시연](https://github.com/user-attachments/assets/2f200f72-8319-436e-bdb3-614b1c634ffc)
 
-![문의기능시연](https://github.com/user-attachments/assets/3b8319ab-b269-4d97-9e73-53e820d6cccd)
