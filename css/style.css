@@ -1,9 +1,11 @@
 main {
-  margin: 0 10%;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  margin-top: 50px;
   box-sizing: border-box;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 
 .search-container {
@@ -101,7 +103,7 @@ article > ul > li > ul > li:nth-child(2) {
   flex: 1;
 }
 
-.message-input-label, .search-label, .message-input-section > h3, .choose-your-master-article > section > h3 {
+.message-input-label, .search-label, .message-form > h3, .choose-your-master-article > section > h3, header > h2, .chat-history-section h2 {
   position: absolute;
   left: -9999px; /* 화면 밖으로 이동시켜 시각적으로 숨김 */
   clip: rect(0, 0, 0, 0); /* 시각적으로 보이지 않게 함 */
@@ -114,14 +116,13 @@ article > ul > li > ul > li:nth-child(2) {
 .chat-history-section {
   flex-direction: column;
   justify-content: end;
-  margin-bottom: 45px;
+  margin-top: 150px;
+  margin-bottom: 60px;
   flex: 1;
 }
 
 .chat-history-section h2 {
-  position: sticky;
-  top : 0;
-  padding: 10px;
+  margin: 10px;
   background-color: white;
 }
 
@@ -130,45 +131,44 @@ article > ul > li > ul > li:nth-child(2) {
   text-align: left;
 }
 
-.master-chat-history {
+.client-chat-history {
   display: flex;
   justify-content: right;
 }
 
-.master-chat-history i {
+.master-chat, .client-chat {
+  flex: 1;
+  white-space: pre-wrap;
+  margin: 10px 0;
+}
+
+.client-chat {
+  text-align: right;
+}
+
+.client-chat-history i {
   display: flex;
   font-size: 36px;
   margin-left: 10px;
   margin-top: 8px;
 }
 
-.client-chat-history i {
-  display: flex;
-  font-size: 36px;
-  margin-right: 10px;
-  margin-top: 8px;
-}
-
-.master-chat-history > p {
+.master-chat-history > p, client-chat-history > p {
   margin-left: 46px;
 }
 
-.client-chat-history > p {
-  margin-right: 46px;
-}
-
-.message-input-section {
+.message-form {
   display: flex;
   justify-content: end;
   position: fixed;
   padding: 10px;
   background-color: white;
   bottom: 0;
-  left: 10%;
-  right: 10%;
+  left: 20%;
+  right: 20%;
 }
 
-.message-input-section input {
+.message-form input {
   flex: 1;
   height: 35px;
   background-color: #F3F4F6;
@@ -176,7 +176,7 @@ article > ul > li > ul > li:nth-child(2) {
   padding: 12px;
 }
 
-.message-input-section button {
+.message-form button {
   height: 36px;
   width: 36px;
   background-color: white;
@@ -186,13 +186,40 @@ article > ul > li > ul > li:nth-child(2) {
   font-size: 16px;
 }
 
-.message-input-section button:hover {
+.message-form button:hover {
   background-color: blue;
   color: white;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  background-color: white;
+}
 
+.master-icon {
+  height: 36px;
+  width: 36px;
+  border-radius: 30px;
+  margin-right: 10px;
+}
 
+.selected-master {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  list-style-type: none;
+}
 
-
+.selected-master li:first-child {
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
 

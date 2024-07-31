@@ -1,10 +1,15 @@
-const sendButton = document.querySelector(".message-input-section > button")
-sendButton.addEventListener("click", sendButtonListener());
+let display = true;
 
 const searchInput = document.querySelector("#search-input");
 searchInput.addEventListener("input", searchInputListener);
 
+document.addEventListener("click", handleArticleVisibility);
+
 function searchInputListener() {
+    const chooseYourMasterArticle = document.querySelector(
+        ".choose-your-master-article");
+    chooseYourMasterArticle.style.display = "block";
+
     const searchValue = searchInput.value.toLowerCase();
 
     const masterList = document.querySelector("#master-list");
@@ -41,8 +46,10 @@ function sendButtonListener() {
         document.querySelector("#chat-input").value = "";
 
         // 입력한 메시지가 없으면 경고창 띄우기
-        if (!message || message.trim() === "") {
-            alert("메시지를 입력해주세요.");
+        if (!message || message.trim() === ""
+            || !["시작", "1", "2", "3", "4"].includes(message)) {
+            alert("정답 혹은 시작을 입력해주세요.");
+            document.querySelector("#chat-input").focus();
             return;
         }
 
@@ -55,7 +62,7 @@ function sendButtonListener() {
         document.querySelector("#chat-input").disabled = true;
 
         // 닫변 받기 전까지 요청하고 있다고 알리기
-        chatHistory.appendChild(makeMasterChatHistory("잠시만 기다려주세요..."));
+        chatHistory.appendChild(makeMasterChat("잠시만 기다려주세요...",));
         scrollToBottom();
 
         // 마스터의 답변을 가져와서 채팅 history에 추가하기
@@ -65,11 +72,13 @@ function sendButtonListener() {
         chatHistory.removeChild(chatHistory.lastChild);
 
         // 답변 받은 후에 채팅 history에 추가하기
-        chatHistory.appendChild(makeMasterChatHistory(response));
+        chatHistory.appendChild(makeMasterChat(response));
         scrollToBottom();
 
         // 답변 받은 후에 다시 입력할 수 있게 하기
         document.querySelector("#chat-input").disabled = false;
+        // 다시 입력할 수 있게 하고 focus하기
+        document.querySelector("#chat-input").focus();
     };
 }
 
@@ -79,7 +88,7 @@ function scrollToBottom() {
 }
 
 function makeClientChat(message) {
-    const newClientChatHistory = document.createElement("div");
+    const newClientChatHistory = document.createElement("pre");
     newClientChatHistory.classList.add("client-chat-history");
 
     const clientChatIcon = document.createElement("i");
@@ -89,8 +98,8 @@ function makeClientChat(message) {
     clientChat.classList.add("client-chat");
     clientChat.textContent = message;
 
-    newClientChatHistory.appendChild(clientChatIcon);
     newClientChatHistory.appendChild(clientChat);
+    newClientChatHistory.appendChild(clientChatIcon);
     return newClientChatHistory;
 }
 
@@ -134,7 +143,27 @@ function getMasterData(masterName) {
 }
 
 function makePrompt(data, message) {
-    const systemRole = `당신은 ${data["expert"]} 퀴즈 출제자다.퀴즈를 내주고 유저가 맞추면 다음 퀴즈를 알려주고 아니면 해설과 함게 알려주고 다음 퀴즈를 낸다.`;
+    const systemRole = `당신은 ${data["expert"]} 객관식 퀴즈 출제자 ${data["name"]}.퀴즈를 내주고 유저가 맞추면 다음 퀴즈를 알려주고 아니면 해설과 함게 알려주고 다음 퀴즈를 낸다.
+    응답을 pre 테그에 넣을 수 있도록 해주세요. pre테그는 제외 하고 내용만 보내주세요.
+     [형식]:
+        [마스터 이름]:
+        
+        맞으면 축가해준다.
+            
+        or   
+            
+        틀렸습니다.
+        해설: [해설 내용]
+         
+        퀴즈 [번호]: [퀴즈 내용]
+        
+        1. [선택1]
+        2. [선택2]
+        3. [선택3]
+        4. [선택4]
+        
+        정답을 입력해 주세요!
+    `;
 
     const prompt =
         [
@@ -158,18 +187,21 @@ function makePrompt(data, message) {
     return prompt;
 }
 
-function makeMasterChatHistory(message) {
+function makeMasterChat(message) {
+    console.log(message);
     const newMasterChatHistory = document.createElement("div");
     newMasterChatHistory.classList.add("master-chat-history");
 
-    const div = document.createElement("div");
-    div.classList.add("master-chat");
-    div.innerHTML = marked.parse(message);
-    newMasterChatHistory.appendChild(div);
+    // 복사한 사진을 넣어준다
+    const masterIcon = document.createElement("img");
+    masterIcon.classList.add("master-icon");
+    masterIcon.src = document.querySelector(".master-icon").src;
+    newMasterChatHistory.appendChild(masterIcon);
 
-    const masterChatIcon = document.createElement("i");
-    masterChatIcon.classList.add("bi", "bi-chat");
-    newMasterChatHistory.appendChild(masterChatIcon);
+    const masterChat = document.createElement("pre");
+    masterChat.classList.add("master-chat");
+    masterChat.textContent = message;
+    newMasterChatHistory.appendChild(masterChat);
     return newMasterChatHistory;
 }
 
@@ -228,21 +260,114 @@ function makeMasterRadio(master) {
     masterRadio.id = master.name;
     masterRadio.value = master.name;
     masterRadio.classList.add("choose-your-master-input")
-    masterRadio.addEventListener("change", sayHelloMessage());
+    masterRadio.addEventListener("change", initChat());
     return masterRadio;
 }
 
-function sayHelloMessage() {
+function initHistorySection(masterImg, masterName) {
+    const chatHistorySection = document.createElement("article");
+    chatHistorySection.classList.add("chat-history-section");
+
+    const masterChatHistoryTitle = document.createElement("h2");
+    masterChatHistoryTitle.textContent = "퀴즈 기록";
+    chatHistorySection.appendChild(masterChatHistoryTitle);
+
+    const masterChatHistory = document.createElement("div");
+    masterChatHistory.classList.add("master-chat-history");
+    const masterIcon = document.createElement("img");
+    masterIcon.classList.add("master-icon");
+    masterIcon.src = masterImg;
+    masterIcon.alt = masterName;
+    masterChatHistory.appendChild(masterIcon);
+
+    const masterChat = document.createElement("pre");
+    masterChat.classList.add("master-chat");
+    masterChat.textContent = "퀴즈 풀기를 시작하려면 시작을 입력하세요.";
+    masterChatHistory.appendChild(masterChat);
+    chatHistorySection.appendChild(masterChatHistory);
+
+    return chatHistorySection;
+}
+
+function initMessageForm(messageForm) {
+    messageForm.classList.add("message-form");
+    messageForm.innerHTML = `
+                <h3>문의사항 입력</h3>
+                <label for="chat-input" class="message-input-label">정답 입력창</label>
+                <input type="text" id="chat-input" placeholder="정답을 입력하세요">
+                <button type="submit" class="send-button"><i class="bi bi-send"></i></button>
+        `;
+}
+
+function handleArticleVisibility() {
+    if (document.activeElement !== searchInput) {
+        const chooseYourMasterArticle = document.querySelector(
+            ".choose-your-master-article");
+        if (display) {
+            chooseYourMasterArticle.style.display = "block";
+        } else {
+            chooseYourMasterArticle.style.display = "none";
+        }
+    }
+}
+
+function displayMasterInfo(masterName, masterExpert) {
+    const header = document.querySelector("header");
+    const selectedMaster = document.createElement("ul");
+    selectedMaster.classList.add("selected-master");
+
+    const masterNameLi = document.createElement("li");
+    masterNameLi.textContent = masterName;
+    selectedMaster.appendChild(masterNameLi);
+
+    const masterExpertLi = document.createElement("li");
+    masterExpertLi.textContent = masterExpert;
+    selectedMaster.appendChild(masterExpertLi);
+
+    header.appendChild(selectedMaster);
+}
+
+function initChat() {
     return async () => {
-        let chatHistory = document.querySelector(".chat-history-section");
-        chatHistory.innerHTML = "";
+        // masterList를 숨기기
+        const chooseYourMasterArticle = document.querySelector(
+            ".choose-your-master-article");
+        chooseYourMasterArticle.style.display = "none";
+        display = false;
 
-        let sectionHeader = document.createElement("h2");
-        sectionHeader.textContent = "퀴즈 기록"
-        chatHistory.appendChild(sectionHeader);
+        const oldMessageInputSection = document.querySelector(".message-form");
+        if (oldMessageInputSection) {
+            oldMessageInputSection.remove();
+        }
 
-        let sayHello = makeMasterChatHistory("퀴즈 풀기를 시작하려면 시작을 입력하세요.");
-        chatHistory.appendChild(sayHello);
+        const oldChatHistorySection = document.querySelector(
+            ".chat-history-section");
+        if (oldChatHistorySection) {
+            oldChatHistorySection.remove();
+        }
+
+        // 선택한 마스터의 정보를 가져온다
+        const selectedRadio = document.querySelector(
+            'input[name="master-selected"]:checked');
+        const masterSelected = selectedRadio.parentElement;
+        const masterName = masterSelected.querySelector(
+            "li:nth-child(2)").textContent;
+        const masterImg = masterSelected.querySelector("img").src;
+        const masterExpert = masterSelected.querySelector(
+            "li:nth-child(3)").textContent;
+
+        displayMasterInfo(masterName, masterExpert);
+
+        const main = document.querySelector("main")
+        const chatHistorySection = initHistorySection(masterImg, masterName);
+        main.appendChild(chatHistorySection);
+
+        const messageForm = document.createElement("form");
+        initMessageForm(messageForm);
+        main.appendChild(messageForm);
+
+        const sendButton = document.querySelector(".message-form > button")
+        sendButton.addEventListener("click", sendButtonListener());
     };
 }
 
