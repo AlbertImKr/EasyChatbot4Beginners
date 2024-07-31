@@ -18,66 +18,63 @@
       <input type="text" id="search-input" placeholder="Master를 검색하세요">
     </div>
   </article>
-  <form>
-    <article class="choose-your-master-article">
-      <h2>퀴즈 Master를 선택하세요</h2>
-      <ul id="master-list">
-        <li>
-          <ul>
-            <li>
-              <img src="./images/Emma.jpg" alt="Emma">
-            </li>
-            <li>Emma</li>
-            <li>Expert in HTML, CSS</li>
-            <li>Rating:
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-            </li>
-          </ul>
-          <input type="radio" name="master-selected" class="choose-your-master-input" id="select-1">
-          <label class="choose-master-label" for="select-1">선택</label>
-        </li>
-        <li>
-          <ul>
-            <li>
-              <a href="./images/Liam.jpg">
-                <img src="./images/Liam.jpg" alt="John">
-              </a>
-            </li>
-            <li>Liam</li>
-            <li>Expert in HTML, CSS and javaScript</li>
-            <li>Rating:
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-half"></i>
-            </li>
-          </ul>
-          <input type="radio" name="master-selected" class="choose-your-master-input" id="select-2">
-          <label class="choose-master-label" for="select-2">선택</label>
-        </li>
-      </ul>
-    </article>
-    <article class="ask-your-master-article">
-      <h2>퀴즈 기록</h2>
-      <section class="chat-history-section">
-        <h3>채팅 history</h3>
-        <div class="master-chat-history">
-          <p class="master-chat">퀴즈 풀기를 시작하려면 시작을 입력하세요.</p>
-          <i class="bi bi-chat"></i>
-        </div>
-      </section>
-      <section class="message-input-section">
-        <h3>문의사항 입력</h3>
-        <label for="chat-input" class="message-input-label">메시지 입력창</label>
-        <input type="text" id="chat-input" placeholder="메시지를 입력하세요">
-        <button type="submit" class="send-button"><i class="bi bi-send"></i></button>
-      </section>
-    </article>
+  <article class="choose-your-master-article">
+    <h2>퀴즈 Master를 선택하세요</h2>
+    <ul id="master-list">
+      <li>
+        <ul>
+          <li>
+            <img src="./images/Emma.jpg" alt="Emma">
+          </li>
+          <li>Emma</li>
+          <li>Expert in HTML, CSS</li>
+          <li>Rating:
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </li>
+        </ul>
+        <input type="radio" name="master-selected" class="choose-your-master-input" id="select-1">
+        <label class="choose-master-label" for="select-1">선택</label>
+      </li>
+      <li>
+        <ul>
+          <li>
+            <a href="./images/Liam.jpg">
+              <img src="./images/Liam.jpg" alt="John">
+            </a>
+          </li>
+          <li>Liam</li>
+          <li>Expert in HTML, CSS and javaScript</li>
+          <li>Rating:
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-half"></i>
+          </li>
+        </ul>
+        <input type="radio" name="master-selected" class="choose-your-master-input" id="select-2">
+        <label class="choose-master-label" for="select-2">선택</label>
+      </li>
+    </ul>
+  </article>
+  <article class="chat-history-section">
+    <h2>퀴즈 기록</h2>
+    <div class="master-chat-history">
+      <div>
+        <p class="master-chat">퀴즈 풀기를 시작하려면 시작을 입력하세요.</p>
+      </div>
+      <i class="bi bi-chat"></i>
+    </div>
+  </article>
+  <form class="message-input-section">
+    <h3>문의사항 입력</h3>
+    <label for="chat-input" class="message-input-label">메시지 입력창</label>
+    <input type="text" id="chat-input" placeholder="메시지를 입력하세요">
+    <button type="submit" class="send-button"><i class="bi bi-send"></i></button>
   </form>
 </main>
 <script src="js/script.js"></script>
