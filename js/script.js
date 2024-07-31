@@ -313,6 +313,12 @@ function handleArticleVisibility() {
         } else {
             chooseYourMasterArticle.style.display = "none";
         }
+        searchInput.value = "";
+        const masterItems = document.querySelectorAll("#master-list > li");
+
+        masterItems.forEach((masterItem) => {
+            masterItem.style.display = "block";
+        });
     }
 }
 
