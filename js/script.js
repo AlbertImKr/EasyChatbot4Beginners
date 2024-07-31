@@ -49,12 +49,14 @@ function sendButtonListener() {
         // 채팅 history에 메시지 추가하기
         const chatHistory = document.querySelector(".chat-history-section");
         chatHistory.appendChild(makeClientChat(message));
+        scrollToBottom();
 
         // 답변 받기 전까지 더 이상 입력 못하게 하기
         document.querySelector("#chat-input").disabled = true;
 
         // 닫변 받기 전까지 요청하고 있다고 알리기
         chatHistory.appendChild(makeMasterChatHistory("잠시만 기다려주세요..."));
+        scrollToBottom();
 
         // 마스터의 답변을 가져와서 채팅 history에 추가하기
         const response = await getChatResponse(message);
@@ -64,10 +66,16 @@ function sendButtonListener() {
 
         // 답변 받은 후에 채팅 history에 추가하기
         chatHistory.appendChild(makeMasterChatHistory(response));
+        scrollToBottom();
 
         // 답변 받은 후에 다시 입력할 수 있게 하기
         document.querySelector("#chat-input").disabled = false;
     };
+}
+
+function scrollToBottom() {
+    // 전체 브라우저를 스크롤하기
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 function makeClientChat(message) {
@@ -154,14 +162,13 @@ function makeMasterChatHistory(message) {
     const newMasterChatHistory = document.createElement("div");
     newMasterChatHistory.classList.add("master-chat-history");
 
+    const div = document.createElement("div");
+    div.classList.add("master-chat");
+    div.innerHTML = marked.parse(message);
+    newMasterChatHistory.appendChild(div);
+
     const masterChatIcon = document.createElement("i");
     masterChatIcon.classList.add("bi", "bi-chat");
-
-    const masterChat = document.createElement("p");
-    masterChat.classList.add("master-chat");
-    masterChat.innerHTML = marked.parse(message);
-
-    newMasterChatHistory.appendChild(masterChat);
     newMasterChatHistory.appendChild(masterChatIcon);
     return newMasterChatHistory;
 }
@@ -221,18 +228,22 @@ function makeMasterRadio(master) {
     masterRadio.id = master.name;
     masterRadio.value = master.name;
     masterRadio.classList.add("choose-your-master-input")
-    masterRadio.addEventListener("change", async () => {
+    masterRadio.addEventListener("change", sayHelloMessage());
+    return masterRadio;
+}
+
+function sayHelloMessage() {
+    return async () => {
         let chatHistory = document.querySelector(".chat-history-section");
         chatHistory.innerHTML = "";
 
-        let sectionHeader = document.createElement("h3");
-        sectionHeader.textContent = "채팅 history"
+        let sectionHeader = document.createElement("h2");
+        sectionHeader.textContent = "퀴즈 기록"
         chatHistory.appendChild(sectionHeader);
 
         let sayHello = makeMasterChatHistory("퀴즈 풀기를 시작하려면 시작을 입력하세요.");
         chatHistory.appendChild(sayHello);
-    });
-    return masterRadio;
+    };
 }
 
 function makeMasterLabel(master) {

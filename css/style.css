@@ -6,12 +6,6 @@ main {
   box-sizing: border-box;
 }
 
-main > form {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
 .search-container {
   border: 1px solid #a0a0a0;
   border-radius: 4px;
@@ -85,6 +79,10 @@ article > ul > li > ul > li:nth-child(2) {
   margin-top: 5px;
 }
 
+#master-list {
+  background: white;
+}
+
 .choose-your-master-input:checked + label {
   background-color: red;
   border-color: red;
@@ -103,7 +101,7 @@ article > ul > li > ul > li:nth-child(2) {
   flex: 1;
 }
 
-.message-input-label, .search-label, .chat-history-section > h3 , .message-input-section > h3, .choose-your-master-article > section > h3 {
+.message-input-label, .search-label, .message-input-section > h3, .choose-your-master-article > section > h3 {
   position: absolute;
   left: -9999px; /* 화면 밖으로 이동시켜 시각적으로 숨김 */
   clip: rect(0, 0, 0, 0); /* 시각적으로 보이지 않게 함 */
@@ -114,10 +112,17 @@ article > ul > li > ul > li:nth-child(2) {
 }
 
 .chat-history-section {
-  flex: 1;
-  display: flex;
   flex-direction: column;
   justify-content: end;
+  margin-bottom: 45px;
+  flex: 1;
+}
+
+.chat-history-section h2 {
+  position: sticky;
+  top : 0;
+  padding: 10px;
+  background-color: white;
 }
 
 .chat-history-section > div {
@@ -155,6 +160,12 @@ article > ul > li > ul > li:nth-child(2) {
 .message-input-section {
   display: flex;
   justify-content: end;
+  position: fixed;
+  padding: 10px;
+  background-color: white;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
 }
 
 .message-input-section input {
@@ -162,7 +173,7 @@ article > ul > li > ul > li:nth-child(2) {
   height: 35px;
   background-color: #F3F4F6;
   border: none;
-  padding: 12px ;
+  padding: 12px;
 }
 
 .message-input-section button {
