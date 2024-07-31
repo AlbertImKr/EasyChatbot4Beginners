@@ -318,6 +318,11 @@ function handleArticleVisibility() {
 
 function displayMasterInfo(masterName, masterExpert) {
     const header = document.querySelector("header");
+    const oldSelectedMaster = document.querySelector(".selected-master");
+    if (oldSelectedMaster) {
+        header.removeChild(oldSelectedMaster);
+    }
+
     const selectedMaster = document.createElement("ul");
     selectedMaster.classList.add("selected-master");
 
