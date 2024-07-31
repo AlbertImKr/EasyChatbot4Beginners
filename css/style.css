@@ -25,40 +25,40 @@ main {
   width: 400px;
 }
 
-article ul {
+.choose-your-master-article ul {
   list-style-type: none;
   padding: 0;
 }
 
-article > ul {
+.choose-your-master-article > ul {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 16px;
 }
 
-article > ul > li {
+.choose-your-master-article > ul > li {
   margin-right: 16px;
   grid-column: span 2;
 }
 
-article > ul > li > ul > li {
+.choose-your-master-article li {
   margin-bottom: 8px;
   font-size: 14px;
 }
 
-article > ul > li > ul > li > a {
+.choose-your-master-article a {
   overflow: hidden;
   height: 200px;
 }
 
-article > ul > li > ul > li img {
+.choose-your-master-article img {
   object-fit: cover;
   width: 100%;
   height: 250px;
   object-position: top;
 }
 
-article > ul > li > ul > li:nth-child(2) {
+.choose-your-master-article > ul > li > ul > li:nth-child(2) {
   font-weight: bold;
   font-size: 16px;
 }
