@@ -9,6 +9,7 @@ function searchInputListener() {
     const chooseYourMasterArticle = document.querySelector(
         ".choose-your-master-article");
     chooseYourMasterArticle.style.display = "block";
+    scrollToTop();
 
     const searchValue = searchInput.value.toLowerCase();
 
@@ -24,6 +25,10 @@ function searchInputListener() {
             masterItem.style.display = "none";
         }
     });
+}
+
+function scrollToTop() {
+    window.scrollTo(0, 0);
 }
 
 function sendButtonListener() {
