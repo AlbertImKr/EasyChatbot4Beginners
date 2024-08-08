@@ -1,65 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <title>Quiz Master</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <meta charset="UTF-8">
+    <title>Quiz Master</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 </head>
 <body>
 <header class="search-container-article">
-  <h2>퀴즈 Master를 검색하세요.</h2>
-  <div class="search-container">
-    <label for="search-input" class="search-label">검색창</label>
-    <i class="bi bi-search"></i>
-    <input type="text" id="search-input" placeholder="Master를 검색하세요">
-  </div>
+    <h2>퀴즈 Master를 검색하세요.</h2>
+    <div class="search-container">
+        <label for="search-input" class="search-label">검색창</label>
+        <i class="bi bi-search"></i>
+        <input type="text" id="search-input" placeholder="Master를 검색하세요">
+    </div>
 </header>
 <main>
-  <article class="choose-your-master-article">
-    <h2>퀴즈 Master를 선택하세요</h2>
-    <ul id="master-list">
-      <li>
-        <ul>
-          <li>
-            <img src="./images/Emma.jpg" alt="Emma">
-          </li>
-          <li>Emma</li>
-          <li>Expert in HTML, CSS</li>
-          <li>Rating:
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-          </li>
+    <article class="choose-your-master-article">
+        <h2>퀴즈 Master를 선택하세요</h2>
+        <ul id="master-list">
+            <li>
+                <ul>
+                    <li>
+                        <img src="./images/Emma.jpg" alt="Emma">
+                    </li>
+                    <li>Emma</li>
+                    <li>Expert in HTML, CSS</li>
+                    <li>Rating:
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                    </li>
+                </ul>
+                <input type="radio" name="master-selected" class="choose-your-master-input" id="select-1">
+                <label class="choose-master-label" for="select-1">선택</label>
+            </li>
+            <li>
+                <ul>
+                    <li>
+                        <a href="./images/Liam.jpg">
+                            <img src="./images/Liam.jpg" alt="John">
+                        </a>
+                    </li>
+                    <li>Liam</li>
+                    <li>Expert in HTML, CSS and javaScript</li>
+                    <li>Rating:
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-fill"></i>
+                        <i class="bi bi-star-half"></i>
+                    </li>
+                </ul>
+                <input type="radio" name="master-selected" class="choose-your-master-input" id="select-2">
+                <label class="choose-master-label" for="select-2">선택</label>
+            </li>
         </ul>
-        <input type="radio" name="master-selected" class="choose-your-master-input" id="select-1">
-        <label class="choose-master-label" for="select-1">선택</label>
-      </li>
-      <li>
-        <ul>
-          <li>
-            <a href="./images/Liam.jpg">
-              <img src="./images/Liam.jpg" alt="John">
-            </a>
-          </li>
-          <li>Liam</li>
-          <li>Expert in HTML, CSS and javaScript</li>
-          <li>Rating:
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-half"></i>
-          </li>
-        </ul>
-        <input type="radio" name="master-selected" class="choose-your-master-input" id="select-2">
-        <label class="choose-master-label" for="select-2">선택</label>
-      </li>
-    </ul>
-  </article>
+    </article>
 </main>
 <script src="js/script.js"></script>
 </body>
