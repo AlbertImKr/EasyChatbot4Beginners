@@ -64,7 +64,7 @@ main {
 }
 
 .choose-your-master-input {
-  display: none; /* 기본 라디오 버튼 숨기기 */
+  display: none;
 }
 
 .choose-master-label {
@@ -105,12 +105,12 @@ main {
 
 .message-input-label, .search-label, .message-form > h3, .choose-your-master-article > section > h3, header > h2, .chat-history-section h2 {
   position: absolute;
-  left: -9999px; /* 화면 밖으로 이동시켜 시각적으로 숨김 */
-  clip: rect(0, 0, 0, 0); /* 시각적으로 보이지 않게 함 */
-  clip-path: inset(50%); /* 추가적인 호환성을 위한 클리핑 */
-  overflow: hidden; /* 오버플로우 숨기기 */
-  height: 1px; /* 높이 1px 설정 */
-  width: 1px; /* 너비 1px 설정 */
+  left: -9999px;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
 }
 
 .chat-history-section {
